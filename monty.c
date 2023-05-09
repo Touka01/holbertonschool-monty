@@ -39,6 +39,8 @@ void execute_instruction(char *opcode, char *arg, int line_num) {
     fprintf(stderr, "L%d: unknown instruction %s\n", line_num, opcode);
     exit(EXIT_FAILURE);
   }
+  
+  printf("Executing instruction: %s %s\n", opcode, arg);
 }
 
 void parse_file(char *filename) {
@@ -52,6 +54,7 @@ void parse_file(char *filename) {
   ssize_t nread;
   int line_num = 1;
   while ((nread = getline(&line, &len, fp)) != -1) {
+    printf("Processing line %d: %s", line_num, line); // Add this line
     char *opcode = strtok(line, " \t\n");
     char *arg = strtok(NULL, " \t\n");
     execute_instruction(opcode, arg, line_num);
