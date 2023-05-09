@@ -8,6 +8,10 @@ int stack[STACK_SIZE];
 int stack_ptr = 0;
 
 void push(char *arg, int line_num) {
+  if (stack_ptr >= STACK_SIZE) {
+    fprintf(stderr, "L%d: error: stack overflow\n", line_num);
+    exit(EXIT_FAILURE);
+  }
   if (arg == NULL) {
     fprintf(stderr, "L%d: usage: push integer\n", line_num);
     exit(EXIT_FAILURE);
