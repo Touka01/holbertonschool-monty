@@ -8,6 +8,7 @@ int stack[STACK_SIZE];
 int stack_ptr = 0;
 
 void push(char *arg, int line_num) {
+  printf("push arg: %s\n", arg);
   if (stack_ptr >= STACK_SIZE) {
     fprintf(stderr, "L%d: error: stack overflow\n", line_num);
     exit(EXIT_FAILURE);
@@ -44,6 +45,7 @@ void execute_instruction(char *opcode, char *arg, int line_num) {
 }
 
 void parse_file(char *filename) {
+  printf("filename: %s\n", filename);
   FILE *fp = fopen(filename, "r");
   if (fp == NULL) {
     fprintf(stderr, "Error: Can't open file %s\n", filename);
@@ -54,7 +56,7 @@ void parse_file(char *filename) {
   ssize_t nread;
   int line_num = 1;
   while ((nread = getline(&line, &len, fp)) != -1) {
-    printf("Processing line %d: %s", line_num, line); // Add this line
+    printf("Processing line %d: %s", line_num, line);
     char *opcode = strtok(line, " \t\n");
     char *arg = strtok(NULL, " \t\n");
     execute_instruction(opcode, arg, line_num);
