@@ -12,9 +12,8 @@ void push(char *arg, int line_num) {
     fprintf(stderr, "L%d: usage: push integer\n", line_num);
     exit(EXIT_FAILURE);
   }
-  char *endptr;
-  int val = strtol(arg, &endptr, 10);
-  if (*endptr != '\0' || endptr == arg) {
+  int val = atoi(arg);
+  if (val == 0 && arg[0] != '0') {
     fprintf(stderr, "L%d: usage: push integer\n", line_num);
     exit(EXIT_FAILURE);
   }
