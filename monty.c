@@ -38,11 +38,17 @@ void execute_instruction(char *opcode, char *arg, int line_num) {
   printf("Executing instruction: %s %s\n", opcode, arg); // Debug print statement
 
   if (strcmp(opcode, "push") == 0) {
-    if (arg == NULL || strlen(arg) == 0) {
+    if (arg == NULL || *arg == '\0') {
       fprintf(stderr, "L%d: usage: push integer\n", line_num);
       exit(EXIT_FAILURE);
     } else {
-      push(arg, line_num);
+      char *endptr;
+      long int value = strtol(arg, &endptr, 10);
+      if (*endptr != '\0') {
+        fprintf(stderr, "L%d: usage: push integer\n", line_num);
+        exit(EXIT_FAILURE);
+      }
+      push(value);
     }
   } else if (strcmp(opcode, "pall") == 0) {
     pall();
