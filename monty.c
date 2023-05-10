@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define STACK_SIZE 2024
+
+int stack[STACK_SIZE];
 int stack_ptr = 0;
 
 void push(char *arg, int line_num) {
