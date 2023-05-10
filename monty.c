@@ -38,7 +38,7 @@ void execute_instruction(char *opcode, char *arg, int line_num) {
   printf("Executing instruction: %s %s\n", opcode, arg); // Debug print statement
 
   if (strcmp(opcode, "push") == 0) {
-    if (arg == NULL || *arg == '\0') {
+    if (arg == NULL || strlen(arg) == 0) {
       fprintf(stderr, "L%d: usage: push integer\n", line_num);
       exit(EXIT_FAILURE);
     } else {
