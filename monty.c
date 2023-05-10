@@ -35,6 +35,8 @@ void pall() {
 }
 
 void execute_instruction(char *opcode, char *arg, int line_num) {
+  printf("Executing instruction: %s %s\n", opcode, arg); // Debug print statement
+
   if (strcmp(opcode, "push") == 0) {
     push(arg, line_num);
   } else if (strcmp(opcode, "pall") == 0) {
