@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define STACK_SIZE 1024
-
 int stack[STACK_SIZE];
 int stack_ptr = 0;
 
