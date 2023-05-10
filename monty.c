@@ -35,9 +35,13 @@ void pall() {
 }
 
 void execute_instruction(char *opcode, char *arg, int line_num) {
-  printf("Executing instruction: %s %s\n", opcode, arg); // Debug print statement
+  printf("Executing instruction: %s %s\n", opcode, arg);
 
   if (strcmp(opcode, "push") == 0) {
+    if (arg == NULL) {
+      fprintf(stderr, "L%d: usage: push integer\n", line_num);
+      exit(EXIT_FAILURE);
+    }
     push(arg, line_num);
   } else if (strcmp(opcode, "pall") == 0) {
     pall();
