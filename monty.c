@@ -10,18 +10,18 @@ int stack_ptr = 0;
 void push(char *arg, int line_num) {
   if (arg == NULL || *arg == '\0') {
     fprintf(stderr, "L%d: usage: push integer\n", line_num);
-    return;
+    exit(EXIT_FAILURE);
   }
 
   int val = atoi(arg);
-  if (val == 0 && arg[0] != '0') {
+  if (val == 0 && *arg != '0') {
     fprintf(stderr, "L%d: usage: push integer\n", line_num);
-    return;
+    exit(EXIT_FAILURE);
   }
 
   if (stack_ptr >= STACK_SIZE) {
     fprintf(stderr, "L%d: error: stack overflow\n", line_num);
-    return;
+    exit(EXIT_FAILURE);
   }
 
   stack[stack_ptr++] = val;
