@@ -54,6 +54,9 @@ void parse_file(char *filename) {
 
   while ((nread = getline(&line, &len, fp)) != -1) {
     char *opcode = strtok(line, " \t\n");
+    if (opcode == NULL) {
+      continue;
+    }
     char *arg = strtok(NULL, " \t\n");
     execute_instruction(opcode, arg, line_num);
     line_num++;
