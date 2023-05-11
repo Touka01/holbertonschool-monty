@@ -52,7 +52,7 @@ int main(int argc, char *argv[]) {
                 /* Convert the argument to an integer using atoi */
                 int value = atoi(arg);
                 /* Push the value to the stack */
-                push(&stack, value);
+                push(&stack, arg);
             }
             /* Handle pall opcode */
             else if (strcmp(opcode, "pall") == 0) {
@@ -94,6 +94,19 @@ void push(stack_t **stack, int value) {
     }
 
     *stack = new_node;
+}
+
+void push(stack_t **stack, const char *arg) {
+    if (arg == NULL) {
+        fprintf(stderr, "Error: Missing argument for push\n");
+        exit(EXIT_FAILURE);
+    }
+
+    /* Convert the argument to an integer using atoi */
+    int value = atoi(arg);
+
+    /* Push the value to the stack */
+    push(stack, value);
 }
 
 void pall(stack_t **stack) {
