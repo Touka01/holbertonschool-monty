@@ -11,6 +11,13 @@ void push(stack_t **stack, int value);
 void pall(stack_t **stack);
 void free_stack(stack_t *stack);
 
+/**
+ * main - Entry point of the Monty interpreter.
+ * @argc: Number of command-line arguments.
+ * @argv: Array of command-line argument strings.
+ *
+ * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure.
+ */
 int main(int argc, char *argv[])
 {
 	/* Check if the correct number of arguments is provided */
@@ -107,6 +114,11 @@ int main(int argc, char *argv[])
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * push - Pushes a new element onto the stack.
+ * @stack: Double pointer to the top of the stack.
+ * @value: Value to be pushed onto the stack.
+ */
 void push(stack_t **stack, int value)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
@@ -129,6 +141,10 @@ void push(stack_t **stack, int value)
 	*stack = new_node;
 }
 
+/**
+ * pall - Prints all the values on the stack.
+ * @stack: Double pointer to the top of the stack.
+ */
 void pall(stack_t **stack)
 {
 	stack_t *current = *stack;
@@ -140,6 +156,10 @@ void pall(stack_t **stack)
 	}
 }
 
+/**
+ * free_stack - Frees the memory allocated for the stack.
+ * @stack: Pointer to the top of the stack.
+ */
 void free_stack(stack_t *stack)
 {
 	stack_t *current = stack;
