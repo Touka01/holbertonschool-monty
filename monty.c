@@ -94,6 +94,12 @@ int main(int argc, char *argv[])
 				/* Print all the values on the stack */
 				pall(&stack);
 			}
+			/* Handle pint opcode */
+			else if (strcmp(opcode, "pint") == 0)
+			{
+    			/* Print the value at the top of the stack */
+    			pint(&stack);
+			}
 			/* Handle other opcodes... */
 			else
 			{

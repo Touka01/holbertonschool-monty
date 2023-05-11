@@ -39,5 +39,6 @@ typedef struct instruction_s
 /* Define function prototypes */
 void push(stack_t **stack, int value);
 void pall(stack_t **stack);
+void pint(stack_t **stack);
 
 #endif /* MONTY_H */
