@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
+#include <ctype.h>
 #include "monty.h"
 
 stack_t *stack = NULL; /* Global variable representing the stack */
@@ -26,8 +28,7 @@ int main(int argc, char *argv[]) {
     /* Read the file line by line */
     char *line = NULL;
     size_t line_size = 0;
-    ptrdiff_t read;
-
+    ssize_t read;
     unsigned int line_number = 1;
 
     while ((read = getline(&line, &line_size, file)) != -1) {
@@ -49,8 +50,24 @@ int main(int argc, char *argv[]) {
                     free_stack(stack); // Free the stack memory
                     return EXIT_FAILURE;
                 }
+                /* Check if the argument is a valid integer */
+                int i = 0;
+                if (arg[i] == '-' || arg[i] == '+') {
+                    i++;
+                }
+                for (; arg[i] != '\0'; i++) {
+                    if (!isdigit(arg[i])) {
+                        fprintf(stderr, "L%u: usage: push integer\n", line_number);
+                        fclose(file);
+                        free(line);
+                        free_stack(stack); // Free the stack memory
+                        return EXIT_FAILURE;
+                    }
+                }
+                /* Convert the argument to an integer using atoi */
+                int value = atoi(arg);
                 /* Push the value to the stack */
-                push(&stack, atoi(arg));
+                push(&stack, value);
             }
             /* Handle pall opcode */
             else if (strcmp(opcode, "pall") == 0) {
@@ -105,9 +122,11 @@ void pall(stack_t **stack) {
 
 void free_stack(stack_t *stack) {
     stack_t *current = stack;
+    stack_t *next;
+
     while (current != NULL) {
-        stack_t *temp = current;
-        current = current->next;
-        free(temp);
+        next = current->next;
+        free(current);
+        current = next;
     }
 }
