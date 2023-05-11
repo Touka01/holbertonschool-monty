@@ -44,7 +44,8 @@ int main(int argc, char *argv[])
 		char *opcode = strtok(line, " \n\t");
 		char *arg = strtok(NULL, " \n\t");
 
-		if (opcode != NULL) {
+		if (opcode != NULL)
+		{
 			/* Handle push opcode */
 			if (strcmp(opcode, "push") == 0)
 			{
@@ -54,11 +55,12 @@ int main(int argc, char *argv[])
 					fprintf(stderr, "L%u: usage: push integer\n", line_number);
 					fclose(file);
 					free(line);
-					free_stack(stack); // Free the stack memory
-					return EXIT_FAILURE;
+					free_stack(stack); /* Free the stack memory */
+					return (EXIT_FAILURE);
 				}
 				/* Check if the argument is a valid integer */
 				int i = 0;
+
 				if (arg[i] == '-' || arg[i] == '+')
 				{
 					i++;
@@ -70,8 +72,8 @@ int main(int argc, char *argv[])
 						fprintf(stderr, "L%u: usage: push integer\n", line_number);
 						fclose(file);
 						free(line);
-						free_stack(stack); // Free the stack memory
-						return EXIT_FAILURE;
+						free_stack(stack); /* Free the stack memory */
+						return (EXIT_FAILURE);
 					}
 				}
 				/* Convert the argument to an integer using atoi */
@@ -91,8 +93,8 @@ int main(int argc, char *argv[])
 				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 				fclose(file);
 				free(line);
-				free_stack(stack); // Free the stack memory
-				return EXIT_FAILURE;
+				free_stack(stack); /* Free the stack memory */
+				return (EXIT_FAILURE);
 			}
 		}
 
@@ -101,8 +103,8 @@ int main(int argc, char *argv[])
 
 	fclose(file);
 	free(line);
-	free_stack(stack); // Free the stack memory
-	return EXIT_SUCCESS;
+	free_stack(stack); /* Free the stack memory */
+	return (EXIT_SUCCESS);
 }
 
 void push(stack_t **stack, int value)
