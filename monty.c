@@ -14,9 +14,10 @@ void free_stack(stack_t *stack);
 int main(int argc, char *argv[])
 {
 	/* Check if the correct number of arguments is provided */
-	if (argc != 2) {
+	if (argc != 2)
+	{
 		fprintf(stderr, "USAGE: monty file\n");
-		return EXIT_FAILURE;
+		return (EXIT_FAILURE);
 	}
 
 	/* Open the file */
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		return EXIT_FAILURE;
+		return (EXIT_FAILURE);
 	}
 
 	/* Read the file line by line */
