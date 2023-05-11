@@ -49,8 +49,6 @@ int main(int argc, char *argv[]) {
                     free_stack(stack); // Free the stack memory
                     return EXIT_FAILURE;
                 }
-                /* Convert the argument to an integer using atoi */
-                int value = atoi(arg);
                 /* Push the value to the stack */
                 push(&stack, arg);
             }
