@@ -60,6 +60,13 @@ int main(int argc, char *argv[]) {
                 pall(&stack);
             }
             /* Handle other opcodes... */
+            else {
+                fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+                fclose(file);
+                free(line);
+                free_stack(stack); // Free the stack memory
+                return EXIT_FAILURE;
+            }
         }
 
         line_number++;
