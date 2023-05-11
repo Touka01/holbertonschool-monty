@@ -7,6 +7,7 @@ stack_t *stack = NULL; /* Global variable representing the stack */
 
 void push(stack_t **stack, int value);
 void pall(stack_t **stack);
+void free_stack(stack_t *stack);
 
 int main(int argc, char *argv[]) {
     /* Check if the correct number of arguments is provided */
@@ -45,6 +46,7 @@ int main(int argc, char *argv[]) {
                     fprintf(stderr, "L%u: usage: push integer\n", line_number);
                     fclose(file);
                     free(line);
+                    free_stack(stack); // Free the stack memory
                     return EXIT_FAILURE;
                 }
                 /* Convert the argument to an integer using atoi */
@@ -63,9 +65,9 @@ int main(int argc, char *argv[]) {
         line_number++;
     }
 
-    free_stack(*stack);
     fclose(file);
     free(line);
+    free_stack(stack); // Free the stack memory
     return EXIT_SUCCESS;
 }
 
