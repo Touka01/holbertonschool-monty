@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 			else if (strcmp(opcode, "pint") == 0)
 			{
     			/* Print the value at the top of the stack */
-    			pint(&stack);
+    			pint(&stack, line_number);
 			}
 			/* Handle other opcodes... */
 			else
