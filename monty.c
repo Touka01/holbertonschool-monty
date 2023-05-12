@@ -12,6 +12,7 @@ void pall(stack_t **stack);
 void free_stack(stack_t *stack);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
 
 /**
  * main - Entry point of the Monty interpreter.
@@ -119,6 +120,12 @@ int main(int argc, char *argv[])
 			{
     			/* Add the top two elements of the stack */
     			add(&stack, line_number);
+			}
+			/* Handle nop opcode */
+			else if (strcmp(opcode, "nop") == 0)
+			{
+				/* Do nothing */
+				nop(&stack, line_number);
 			}
 			/* Handle other opcodes... */
 			else
