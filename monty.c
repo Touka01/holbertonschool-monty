@@ -100,6 +100,12 @@ int main(int argc, char *argv[])
     			/* Print the value at the top of the stack */
     			pint(&stack, line_number);
 			}
+			/* Handle pop opcode */
+			else if (strcmp(opcode, "pop") == 0)
+			{
+    			/* Remove the top element from the stack */
+    			pop(&stack, line_number);
+			}
 			/* Handle other opcodes... */
 			else
 			{
