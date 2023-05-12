@@ -100,26 +100,26 @@ int main(int argc, char *argv[])
 			/* Handle pint opcode */
 			else if (strcmp(opcode, "pint") == 0)
 			{
-    			/* Print the value at the top of the stack */
-    			pint(&stack, line_number);
+				/* Print the value at the top of the stack */
+				pint(&stack, line_number);
 			}
 			/* Handle pop opcode */
 			else if (strcmp(opcode, "pop") == 0)
 			{
-    			/* Remove the top element from the stack */
-    			pop(&stack, line_number);
+				/* Remove the top element from the stack */
+				pop(&stack, line_number);
 			}
 			/* Handle swap opcode */
 			else if (strcmp(opcode, "swap") == 0)
 			{
-    			/* Swap the top two elements of the stack */
-    			swap(&stack, line_number);
+				/* Swap the top two elements of the stack */
+				swap(&stack, line_number);
 			}
 			/* Handle add opcode */
 			else if (strcmp(opcode, "add") == 0)
 			{
-    			/* Add the top two elements of the stack */
-    			add(&stack, line_number);
+				/* Add the top two elements of the stack */
+				add(&stack, line_number);
 			}
 			/* Handle nop opcode */
 			else if (strcmp(opcode, "nop") == 0)
