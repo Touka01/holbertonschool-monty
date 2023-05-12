@@ -10,6 +10,7 @@ stack_t *stack = NULL; /* Global variable representing the stack */
 void push(stack_t **stack, int value);
 void pall(stack_t **stack);
 void free_stack(stack_t *stack);
+void swap(stack_t **stack, unsigned int line_number);
 
 /**
  * main - Entry point of the Monty interpreter.
@@ -105,6 +106,12 @@ int main(int argc, char *argv[])
 			{
     			/* Remove the top element from the stack */
     			pop(&stack, line_number);
+			}
+			/* Handle swap opcode */
+			else if (strcmp(opcode, "swap") == 0)
+			{
+    			/* Swap the top two elements of the stack */
+    			swap(&stack, line_number);
 			}
 			/* Handle other opcodes... */
 			else
